@@ -2,12 +2,12 @@ html{
   position: relative;
   min-height: 100%;
 }
-body {
-    background: url('../images/photo2.jpg') no-repeat center center fixed;
+body{
+    /*background: url('../images/photo2.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-    -o-background-size: cover;
+    -o-background-size: cover;*/
     margin: 0 0 100px; /* bottom = footer height */
     padding: 1px;
 }
@@ -22,13 +22,13 @@ h2{
 .dropdown{
   font-size: 25px;
 }
-.tran{
+.transp{
   margin: 30px;
     background-color: #ffffff;
     opacity: 0.5;
-    filter: alpha(opacity=60); 
+    filter: alpha(opacity=60);
 }
-.tran.transbox p{
+.transp.transbox p{
   margin: 5%;
     font-weight: bold;
     color: #000000;
@@ -50,4 +50,10 @@ a{
     height: 645px;
     width: 645px;
     border: 1px solid black;
+}
+.profiledetail{
+  width: 50%;
+}
+.places{
+  border: 1px solid black;
 }

@@ -8,7 +8,7 @@ function RegisterController($http, $location) {
   ctrl.register = function() {
     console.log('registering new user');
     $http.post('/register', {
-      username: ctrl.username,
+      email: ctrl.email,
       password: ctrl.password
     }).then(function(){
       $location.path('/createprofile');

@@ -8,7 +8,7 @@ function LoginController($http, $location) {
   ctrl.login = function() {
     console.log('logging in');
     $http.post('/login', {
-      username: ctrl.username,
+      email: ctrl.email,
       password: ctrl.password
     }).then(function(){
       $location.path('/about');

@@ -5,6 +5,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const login = require('./routes/login');
 const register = require('./routes/register');
+const createprofile = require('./routes/createprofile');
+const profile = require('./routes/profile')
 const passport = require('passport');
 const session = require('express-session');
 const auth = require('./auth/setup');
@@ -29,7 +31,8 @@ app.use(passport.session());
 
 app.use('/login', login);
 app.use('/register', register);
-
+app.use('/createprofile', createprofile);
+app.use('/profile', profile);
 
 // serve the index page at /
 app.get('/', function (req, res) {

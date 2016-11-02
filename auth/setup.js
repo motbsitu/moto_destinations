@@ -4,7 +4,7 @@ const User = require('../models/moto.user');
 
 exports.setup = function () {
   passport.use('local', new LocalStrategy({
-    usernameField: 'username',
+    usernameField: 'email',
     passwordField: 'password'
   }, findAndComparePassword));
 
@@ -23,11 +23,11 @@ exports.setup = function () {
   });
 };
 
-function findAndComparePassword(username, password, done) {
-  User.findOne({ username: username }).then(function(user){
+function findAndComparePassword(email, password, done) {
+  User.findOne({ email: email }).then(function(user){
     if (!user) {
-      // didn't find a user with the same username
-      console.log('failed to find user with username:', username);
+      // didn't find a user with the same email
+      console.log('failed to find user with email:', email);
       return done(null, false);
     }
 
@@ -37,6 +37,7 @@ function findAndComparePassword(username, password, done) {
     user.comparePassword(password)
         .then(function(isMatch){
           if (isMatch) {
+            console.log('setup isMatch', isMatch);
             // successfully auth the user
             return done(null, user);
           } else {

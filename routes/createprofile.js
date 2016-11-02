@@ -2,8 +2,12 @@ const router = require('express').Router();
 const User = require('../models/moto.user');
 
 router.post('/', function(req, res) {
-  console.log('registering new user');
-  const user = new User({email: req.body.email, password: req.body.password});
+  console.log('new user profile');
+  var user = req.user;
+  user.name = req.body.name;
+  user.motorcycle =  req.body.motorcycle;
+  user.comment = req.body.comment;
+  user.usrimg = req.body.usrimg;
   user.save().then(function() {
     req.login(user, function(err){
       if (err) {
