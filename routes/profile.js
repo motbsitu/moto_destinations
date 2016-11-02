@@ -9,8 +9,6 @@ const User = require('../models/moto.user.js');
 
 router.get('/moto.users', function(req,res){
 
-    console.log('req. users',req.user);
-
     var motouser = {
       _id: req.user.id,
       email: req.user.email,
@@ -25,15 +23,15 @@ router.get('/moto.users', function(req,res){
 });
 
 router.put('/:id', function(req,res){
-// db.motousers.update({_id: {req.params.id}}, {$set: {comments: req.body.comments}})
   User.findById(req.params.id, function(err, user){
     if (err){
       res.sendStatus(500);
       return;
     }
-    console.log('req body', req.body.comment);
     user.comment = req.body.comment;
-    //add more updates here
+    user.name = req.body.name;
+    user.motorcycle = req.body.motorcycle;
+    user.email = req.body.email;
     user.save(function (err, updatedUser){
       if (err){
         res.sendStatus(500);
