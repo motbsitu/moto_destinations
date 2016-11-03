@@ -8,7 +8,9 @@ function ProfileController($http, $location) {
         $http.get('/profile/moto.users').then(function(response) {
             //put it on controller to make avail in html
             controller.userprofile = response.data;
-        }, function(error) {});
+        }, function(error) {
+          $location.path('/login');
+        });
     };
     controller.motouserupdate = function() {
 

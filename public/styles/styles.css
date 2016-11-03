@@ -13,11 +13,11 @@ body{
 }
 h1{
   font-size: 50px;
-  color: white;
+  color: black;
   font-weight: bolder;
 }
 h2{
-  color: white;
+  color: black;
 }
 .dropdown{
   font-size: 25px;
@@ -47,8 +47,8 @@ a{
     overflow:hidden;
 }
 #map {
-    height: 645px;
-    width: 645px;
+    height: 500px;
+    width: 500px;
     border: 1px solid black;
 }
 .profiledetail{

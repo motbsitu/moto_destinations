@@ -4,7 +4,7 @@ angular.module('motoApp').config(function($routeProvider, $locationProvider) {
 
   $routeProvider.when('/about', {
     templateUrl: 'views/about.html',
-    
+
   }).when('/register', {
     templateUrl: 'views/register.html',
     controller: 'RegisterController as register',

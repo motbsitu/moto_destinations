@@ -11,9 +11,10 @@ function LoginController($http, $location) {
       email: ctrl.email,
       password: ctrl.password
     }).then(function(){
-      $location.path('/about');
+      $location.path('/profile');
     }, function(error) {
       console.log('error loggin in', error);
     });
   };
+
 }

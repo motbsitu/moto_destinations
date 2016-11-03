@@ -1,7 +1,45 @@
-<h2>Search</h2>
+<!-- Map and Side Panel -->
 <div class="row content">
-        <!-- Google Map -->
-        <div class="col-md-7">
-            <div id="map"></div>
-        </div>
-</div>
+    <!-- Google Map -->
+    <div class="col-md-7">
+        <div id="map"></div>
+    </div>
+
+    <div class="col-md-5">
+
+        <!-- Creates Main Panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title text-center">Search For Destinations Near Me </span></h2>
+            </div>
+            <div class="panel-body">
+
+
+                <form name="addForm" novalidate>
+                    <button type="findme" class="btn btn-success btn-block" ng-click="findMe()" ng-disabled="addForm.$invalid">Find Me</button>
+
+                    <div class="row transp places">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>
+                                    Place
+                                </th>
+                            </thead>
+                            <tr>
+                                <td>
+                                    Detail on this place
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Detail on this place
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Detail on this place
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>

@@ -18,31 +18,12 @@ router.get('/moto.users', function(req,res){
       userimg: req.user.userimg
   }
     return res.send(motouser);
+
 }
   res.sendStatus(401);
-  // console.log('profile router working');
+  console.log('checkin router working');
 });
 
-
-router.put('/:id', function(req,res){
-  User.findById(req.params.id, function(err, user){
-    if (err){
-      res.sendStatus(500);
-      return;
-    }
-    user.comment = req.body.comment;
-    user.name = req.body.name;
-    user.motorcycle = req.body.motorcycle;
-    user.email = req.body.email;
-    user.save(function (err, updatedUser){
-      if (err){
-        res.sendStatus(500);
-        return;
-      }res.send(updatedUser);
-    });
-
-  });
-});
 
 
 

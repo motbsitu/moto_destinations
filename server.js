@@ -4,9 +4,11 @@ const connection = require('./db/connection');
 const path = require('path');
 const bodyParser = require('body-parser');
 const login = require('./routes/login');
+const logout = require('./routes/logout')
 const register = require('./routes/register');
 const createprofile = require('./routes/createprofile');
-const profile = require('./routes/profile')
+const profile = require('./routes/profile');
+const checkin = require('./routes/checkin');
 const passport = require('passport');
 const session = require('express-session');
 const auth = require('./auth/setup');
@@ -30,9 +32,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/register', register);
 app.use('/createprofile', createprofile);
 app.use('/profile', profile);
+app.use('/checkin', checkin)
 
 // serve the index page at /
 app.get('/', function (req, res) {

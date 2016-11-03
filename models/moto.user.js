@@ -43,7 +43,7 @@ userSchema.methods.comparePassword = function(password) {
         console.log('Error comparing password', err);
         return resolve(false);
       }
-      console.log('moto.user comparePassword', match);
+    //  console.log('moto.user comparePassword', match);
       resolve(match);
     });
   });
