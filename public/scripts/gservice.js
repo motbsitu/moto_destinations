@@ -23,9 +23,9 @@ angular.module('gservice', [])
             locations = [];
 
             // Set the selected lat and long equal to the ones provided on the refresh() call
-            selectedLat = latitude;
-            selectedLong = longitude;
-    //
+            selectedLat = parseInt(latitude);
+            selectedLong = parseInt(longitude);
+        //    console.log('selected lat', selectedLat);
             // // Perform an AJAX call to get all of the records in the db.
             $http.get('/users').success(function(response){
 
@@ -80,15 +80,30 @@ var initialize = function(latitude, longitude) {
 
     // Uses the selected lat, long as starting point
     var myLatLng = {lat: selectedLat, lng: selectedLong};
-    console.log('my latlng', myLatLng);
+  //  console.log('my latlng', myLatLng);
     // If map has not been created already...
     if (!map){
 
+        // look for the map container
+        var container = document.getElementById('maphere')
+
+        // // if we can't find one, don't try to load the map
+        if (!container) {
+          return;
+        }
+
         // Create a new map and place in the index.html page
-        var map = new google.maps.Map(document.getElementById('maphere'), {
-            zoom: 3,
-            center: myLatLng
+        var map = new google.maps.Map(container, {
+            center: myLatLng,
+            zoom: 8
+
         });
+        //center - not doing anything
+            var center = map.getCenter();
+
+            google.maps.event.addDomListener(window, 'resize', function() {
+                map.setCenter(center);
+            });
     }
 
     // Loop through each location in the array and place a marker
@@ -113,7 +128,7 @@ var initialize = function(latitude, longitude) {
     var initialLocation = new google.maps.LatLng(latitude, longitude);
     var marker = new google.maps.Marker({
         position: initialLocation,
-        animation: google.maps.Animation.BOUNCE,
+        // animation: google.maps.Animation.BOUNCE,
         map: map,
         icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });
@@ -122,8 +137,8 @@ var initialize = function(latitude, longitude) {
 };
 
 // Refresh the page upon window load. Use the initial latitude and longitude
-google.maps.event.addDomListener(window, 'load',
-    googleMapService.refresh(selectedLat, selectedLong));
+// google.maps.event.addDomListener(window, 'load',
+//     googleMapService.refresh(selectedLat, selectedLong));
 
 return googleMapService;
 });

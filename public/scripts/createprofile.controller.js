@@ -6,7 +6,7 @@ function CreateprofileController($http, $location) {
   var ctrl = this;
 
   ctrl.createprofile = function() {
-    console.log('creating new user profile');
+    //console.log('creating new user profile');
     $http.post('/createprofile', {
       name: ctrl.name,
       motorcycle: ctrl.motorcycle,

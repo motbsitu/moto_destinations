@@ -4,7 +4,7 @@ angular.module('motoApp')
 function CheckinController($http, $location, geolocation, gservice) {
     var ctrl = this;
     ctrl.formData = {};
-    console.log(ctrl.formData);
+  //  console.log(ctrl.formData);
     var coords = {};
     var lat = 0;
     var long = 0;
@@ -23,20 +23,34 @@ function CheckinController($http, $location, geolocation, gservice) {
   };
   ctrl.userinfo();
 
-//mapping current location TRY
-geolocation.getLocation().then(function(data){
-    console.log('getlocation working');
+//mapping current location
+    geolocation.getLocation().then(function(data){
         // Set the latitude and longitude equal to the HTML5 coordinates
         coords = {lat:data.coords.latitude, long:data.coords.longitude};
-        console.log('coords', coords);
-        // Display coordinates in location textboxes rounded to three decimal points
-        // ctrl.formData.longitude = parseFloat(coords.long).toFixed(3);
-        // ctrl.formData.latitude = parseFloat(coords.lat).toFixed(3);
-        //
-        // // Display message confirming that the coordinates verified.
-        // ctrl.formData.htmlverified = "Yep (Thanks for giving us real data!)";
+        // coords to number
+        ctrl.formData.longitude = parseFloat(coords.long).toFixed(3);
+        ctrl.formData.latitude = parseFloat(coords.lat).toFixed(3);
 
         gservice.refresh(ctrl.formData.latitude, ctrl.formData.longitude);
-
     });
+
+
+
+      // Saves the destination data to the db
+    ctrl.createdestination = function() {
+      var body = {
+      destName:  ctrl.destName,
+      destComment: ctrl.destComment,
+      location: [ctrl.formData.longitude, ctrl.formData.latitude]
+    };
+    console.log(body);
+        $http.post('/checkin', body
+      ).then(function(){
+        $location.path('/profile');
+      }, function(error) {
+        console.log('error registering', error);
+      });
+    };
+
+
 }

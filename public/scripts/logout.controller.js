@@ -2,7 +2,7 @@ angular.module('motoApp')
 .controller('LogoutController', LogoutController);
 
 function LogoutController($http, $location) {
-  console.log('LogoutController loaded');
+  //console.log('LogoutController loaded');
   var ctrl = this;
 
   ctrl.logout = function() {

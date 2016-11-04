@@ -16,23 +16,21 @@
             <div class="panel-body">
 
                 <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
-                <form name="addForm" novalidate>
-                  <button type="findme" class="btn btn-success btn-block"  >Find Me</button>
+                <form name="addForm" ng-submit="checkin.createdestination()" novalidate>
+                  <!-- <button type="findme" class="btn btn-success btn-block"  >Find Me</button> -->
                     <div class="form-group">
                         <label for="username">Username </label>
                         <p id="username" >{{checkin.userprofile.name}}</p>
                     </div>
                     <div class="form-group">
-                        <label>Location Name</label>
-                        <input type="text" class="form-control" />
-                        <!-- add into input when have model set    ng-model=" "  -->
+                        <label>Destination Name</label>
+                        <input type="text" class="form-control" ng-model="checkin.destName" />
                     </div>
                     <div class="form-group">
-                        <label>Location Comments</label>
-                        <input type="text" class="form-control" />
-                        <!-- add into input when have model set    ng-model=" "  -->
-                    </div>
+                        <label>Destination Comments</label>
+                        <input type="text" class="form-control" ng-model="checkin.destComment"/>
 
+                    </div>
 
                     <!-- Submit button. Note that its tied to createdestination() function from checkinCtrl. Also note ng-disabled logic which prevents early submits.  -->
                     <button type="submit" class="btn btn-danger btn-block" ng-click="createDestination()" ng-disabled="addForm.$invalid">Submit</button>
