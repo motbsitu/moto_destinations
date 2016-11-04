@@ -1,1 +1,1 @@
-angular.module('motoApp', ['ngRoute']);
+angular.module('motoApp', ['ngRoute', 'geolocation', 'gservice']);

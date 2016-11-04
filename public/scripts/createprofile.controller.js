@@ -10,7 +10,7 @@ function CreateprofileController($http, $location) {
     $http.post('/createprofile', {
       name: ctrl.name,
       motorcycle: ctrl.motorcycle,
-      comments: ctrl.comment,
+      comment: ctrl.comment,
       userimg: ctrl.userimg
     }).then(function(){
       $location.path('/profile');

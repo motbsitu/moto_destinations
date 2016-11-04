@@ -13,33 +13,43 @@
                 <h2 class="panel-title text-center">Search For Destinations Near Me </span></h2>
             </div>
             <div class="panel-body">
-
-
                 <form name="addForm" novalidate>
                     <button type="findme" class="btn btn-success btn-block" ng-click="findMe()" ng-disabled="addForm.$invalid">Find Me</button>
+                <div class="form-group">
+                      <label for="latitude">Your Latitude</label>
+                      <input type="text" class="form-control" id="latitude" placeholder="39.5" ng-model="formData.latitude" readonly>
+                  </div>
+                  <div class="form-group">
+                      <label for="longitude">Your Longitude</label>
+                      <input type="text" class="form-control" id="longitude" placeholder="-98.35" ng-model="formData.longitude" readonly>
+                  </div>
+                  <div class="form-group">
+                      <label for="distance">Max. Distance (miles)</label>
+                      <input type="text" class="form-control" id="distance" placeholder="500" ng-model="formData.distance">
+                  </div>
+            </div>
+            <div class="row transp places">
+                <table class="table table-striped">
+                    <thead>
+                        <th>
+                            Place
+                        </th>
+                    </thead>
+                    <tr>
+                        <td>
+                            Detail on this place
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Detail on this place
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Detail on this place
+                        </td>
+                    </tr>
+                </table>
 
-                    <div class="row transp places">
-                        <table class="table table-striped">
-                            <thead>
-                                <th>
-                                    Place
-                                </th>
-                            </thead>
-                            <tr>
-                                <td>
-                                    Detail on this place
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Detail on this place
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Detail on this place
-                                </td>
-                            </tr>
-                        </table>
-
-                    </div>
+            </div>

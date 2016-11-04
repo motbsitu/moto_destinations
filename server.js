@@ -12,6 +12,8 @@ const checkin = require('./routes/checkin');
 const passport = require('passport');
 const session = require('express-session');
 const auth = require('./auth/setup');
+const methodOverride = require('method-override');
+
 
 const sessionConfig = {
   secret: 'super secret string goes here', // TODO in a real app this would be read from ENV
@@ -26,10 +28,14 @@ connection.connect();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
 app.use(express.static('public'));
 app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride());
+
 
 app.use('/login', login);
 app.use('/logout', logout);

@@ -2,8 +2,9 @@
 <div class="row content">
     <!-- Google Map -->
     <div class="col-md-7">
-        <div id="map"></div>
+        <div id="maphere"></div>
     </div>
+
 
     <div class="col-md-5">
 
@@ -16,27 +17,21 @@
 
                 <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
                 <form name="addForm" novalidate>
-                  <button type="findme" class="btn btn-success btn-block" ng-click="findMe()" ng-disabled="addForm.$invalid">Find Me</button>
+                  <button type="findme" class="btn btn-success btn-block"  >Find Me</button>
                     <div class="form-group">
                         <label for="username">Username </label>
                         <p id="username" >{{checkin.userprofile.name}}</p>
                     </div>
                     <div class="form-group">
                         <label>Location Name</label>
-                        <input type="text" class="form-control" ng-model=" " />
+                        <input type="text" class="form-control" />
+                        <!-- add into input when have model set    ng-model=" "  -->
                     </div>
                     <div class="form-group">
                         <label>Location Comments</label>
-                        <input type="text" class="form-control" ng-model=" " />
+                        <input type="text" class="form-control" />
+                        <!-- add into input when have model set    ng-model=" "  -->
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="latitude">Latitude</label>
-                        <input type="text" class="form-control" id="latitude" value="39.500" ng-model="formData.latitude" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="longitude">Longitude</label>
-                        <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="formData.longitude" readonly>
-                    </div> -->
 
 
                     <!-- Submit button. Note that its tied to createdestination() function from checkinCtrl. Also note ng-disabled logic which prevents early submits.  -->
