@@ -3,7 +3,7 @@ angular.module('motoApp')
 
 function ProfileController($http, $location) {
     var controller = this;
-
+    var destArray = [];
     controller.motouser = function() {
         $http.get('/profile/moto.users').then(function(response) {
             //put it on controller to make avail in html
@@ -22,4 +22,12 @@ function ProfileController($http, $location) {
     };
   controller.motouser();
 
-}
+  controller.motodestinations = function() {
+      $http.get('/profile/moto.destination')
+      .then(function(response) {
+          //put it on controller to make avail in html
+          controller.destArray = response.data;
+      }, function(error) {});
+  };
+  controller.motodestinations();
+  }

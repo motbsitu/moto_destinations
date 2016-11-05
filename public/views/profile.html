@@ -1,4 +1,4 @@
-<h1 class="row">Profile</h1>
+<h2 class="row">Profile</h2>
 <div class="row ">
     <div class="profilepic .col-xs-6 .col-md-4 clearfix ">
         <img ng-src="{{profile.userprofile.userimg}}" />
@@ -21,29 +21,18 @@
 </div>
 
 
-
-<div class="row transp places">
-    <table class="table table-striped">
+<h2 class="row">Saved Destinations</h2>
+<div class="row transp places" >
+    <table class="table table-striped" >
       <thead>
       <th>
         Place
       </th>
     </thead>
-    <tr>
-      <td>
-        Detail on this place
-      </td>
+    <tr ng-repeat="destination in profile.destArray">
+      <td>{{destination.destName}},   {{destination.destComment}} </td>
       </tr>
-      <tr>
-      <td>
-        Detail on this place
-      </td>
-      </tr>
-      <tr>
-      <td>
-        Detail on this place
-      </td>
-    </tr>
+
   </table>
 
 </div>

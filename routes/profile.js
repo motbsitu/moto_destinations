@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const router = require('express').Router();
 const mongoose = require('mongoose');
 const User = require('../models/moto.user.js');
+const Destination = require('../models/moto.destination.js');
 
 
 router.get('/moto.users', function(req,res){
@@ -44,6 +45,16 @@ router.put('/:id', function(req,res){
   });
 });
 
+router.get('/moto.destination', function(req,res){
+      //query by this users ID only
+  var query = Destination.find({userId: req.user.id});
+  query.exec(function(err, destinations){
+    if(err){
+      res.send(err);
+      return;
+    } res.json(destinations);
+  });
+});
 
 
 module.exports = router;

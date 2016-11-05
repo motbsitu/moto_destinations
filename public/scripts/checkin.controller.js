@@ -43,7 +43,6 @@ function CheckinController($http, $location, geolocation, gservice) {
       destComment: ctrl.destComment,
       location: [ctrl.formData.longitude, ctrl.formData.latitude]
     };
-    console.log(body);
         $http.post('/checkin', body
       ).then(function(){
         $location.path('/profile');

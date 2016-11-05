@@ -2,7 +2,7 @@
 <div class="row content">
     <!-- Google Map -->
     <div class="col-md-7">
-        <div id="map"></div>
+        <div id="maphere"></div>
     </div>
 
     <div class="col-md-5">
@@ -14,42 +14,27 @@
             </div>
             <div class="panel-body">
                 <form name="addForm" novalidate>
-                    <button type="findme" class="btn btn-success btn-block" ng-click="findMe()" ng-disabled="addForm.$invalid">Find Me</button>
-                <div class="form-group">
-                      <label for="latitude">Your Latitude</label>
-                      <input type="text" class="form-control" id="latitude" placeholder="39.5" ng-model="formData.latitude" readonly>
-                  </div>
-                  <div class="form-group">
-                      <label for="longitude">Your Longitude</label>
-                      <input type="text" class="form-control" id="longitude" placeholder="-98.35" ng-model="formData.longitude" readonly>
-                  </div>
+
+
                   <div class="form-group">
                       <label for="distance">Max. Distance (miles)</label>
                       <input type="text" class="form-control" id="distance" placeholder="500" ng-model="formData.distance">
                   </div>
+                  <button type="findme" class="btn btn-success btn-block"  ng-disabled="addForm.$invalid">Search Destinations</button>
             </div>
-            <div class="row transp places">
-                <table class="table table-striped">
-                    <thead>
-                        <th>
-                            Place
-                        </th>
-                    </thead>
-                    <tr>
-                        <td>
-                            Detail on this place
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Detail on this place
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Detail on this place
-                        </td>
-                    </tr>
-                </table>
+
+            <h3 class="row">Saved Destinations</h3>
+            <div class="row transp places" >
+                <table class="table table-striped" >
+                  <thead>
+                  <th>
+                    Place
+                  </th>
+                </thead>
+                <tr ng-repeat="destination in search.destArray">
+                  <td>{{destination.destName}},   {{destination.destComment}} </td>
+                  </tr>
+
+              </table>
 
             </div>

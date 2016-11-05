@@ -9,6 +9,7 @@ const register = require('./routes/register');
 const createprofile = require('./routes/createprofile');
 const profile = require('./routes/profile');
 const checkin = require('./routes/checkin');
+const search = require('./routes/search');
 const passport = require('passport');
 const session = require('express-session');
 const auth = require('./auth/setup');
@@ -42,7 +43,8 @@ app.use('/logout', logout);
 app.use('/register', register);
 app.use('/createprofile', createprofile);
 app.use('/profile', profile);
-app.use('/checkin', checkin)
+app.use('/checkin', checkin);
+app.use('/search', search);
 
 // serve the index page at /
 app.get('/', function (req, res) {

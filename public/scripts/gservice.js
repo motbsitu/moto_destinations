@@ -27,18 +27,16 @@ angular.module('gservice', [])
             selectedLong = parseInt(longitude);
         //    console.log('selected lat', selectedLat);
             // // Perform an AJAX call to get all of the records in the db.
-            $http.get('/users').success(function(response){
+            $http.get('/moto.destination').success(function(response){
 
                 // Convert the results into Google Map Format
-                // locations = convertToMapPoints(response);
+              //  locations = convertToMapPoints(response);
 
                 // Then initialize the map.
                 initialize(latitude, longitude);
             }).error(function(){});
-
         };
-    //
-    //     // Private Inner Functions
+
     //     // --------------------------------------------------------------
     //     // Convert a JSON of users into map points
     //     var convertToMapPoints = function(response){
@@ -48,31 +46,27 @@ angular.module('gservice', [])
     //
     //         // Loop through all of the JSON entries provided in the response
     //         for(var i= 0; i < response.length; i++) {
-    //             var user = response[i];
-    //
+    //             var destination = response[i];
+    //             console.log('destination', destination);
     //             // Create popup windows for each record
     //             var  contentString =
-    //                 '<p><b>Username</b>: ' + user.username +
-    //                 '<br><b>Age</b>: ' + user.age +
-    //                 '<br><b>Gender</b>: ' + user.gender +
-    //                 '<br><b>Favorite Language</b>: ' + user.favlang +
+    //                 '<p><b>Name</b>: ' + destination.destName +
+    //                 '<br><b>Comment</b>: ' + destination.destComment +
     //                 '</p>';
     //
     //             // Converts each of the JSON records into Google Maps Location format (Note [Lat, Lng] format).
     //             locations.push({
-    //                 latlon: new google.maps.LatLng(user.location[1], user.location[0]),
+    //                 latlon: new google.maps.LatLng(destination.location[1], destination.location[0]),
     //                 message: new google.maps.InfoWindow({
     //                     content: contentString,
     //                     maxWidth: 320
     //                 }),
-    //                 username: user.username,
-    //                 gender: user.gender,
-    //                 age: user.age,
-    //                 favlang: user.favlang
+    //                 destName: destination.destName,
+    //                 destComment: destination.destComment
     //         });
     //     }
-    //     // location is now an array populated with records in Google Maps format
-    //     return locations;
+    // //     // location is now an array populated with records in Google Maps format
+    // //     return locations;
     // };
 
 // Initializes the map
@@ -83,7 +77,6 @@ var initialize = function(latitude, longitude) {
   //  console.log('my latlng', myLatLng);
     // If map has not been created already...
     if (!map){
-
         // look for the map container
         var container = document.getElementById('maphere')
 
@@ -91,21 +84,14 @@ var initialize = function(latitude, longitude) {
         if (!container) {
           return;
         }
-
         // Create a new map and place in the index.html page
         var map = new google.maps.Map(container, {
             center: myLatLng,
             zoom: 8
 
         });
-        //center - not doing anything
-            var center = map.getCenter();
 
-            google.maps.event.addDomListener(window, 'resize', function() {
-                map.setCenter(center);
-            });
     }
-
     // Loop through each location in the array and place a marker
     // locations.forEach(function(n, i){
     //     var marker = new google.maps.Marker({
@@ -124,21 +110,17 @@ var initialize = function(latitude, longitude) {
     //     });
     // });
 
-    // Set initial location as a bouncing red marker
+    // Set initial location as a red marker
     var initialLocation = new google.maps.LatLng(latitude, longitude);
+
     var marker = new google.maps.Marker({
         position: initialLocation,
-        // animation: google.maps.Animation.BOUNCE,
         map: map,
         icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });
     lastMarker = marker;
 
 };
-
-// Refresh the page upon window load. Use the initial latitude and longitude
-// google.maps.event.addDomListener(window, 'load',
-//     googleMapService.refresh(selectedLat, selectedLong));
 
 return googleMapService;
 });
