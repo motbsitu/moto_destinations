@@ -11,70 +11,69 @@
     <script src="vendors/jquery.min.js"></script>
 
     <!-- Google Maps API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeAoeqIjOOs2OXit9y4OYsXrr5JqJ5cro"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeAoeqIjOOs2OXit9y4OYsXrr5JqJ5cro"></script>
     <script src="vendors/bootstrap.min.js"></script>
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
     <script src="vendors/angularjs-geolocation.min.js"></script>
-    <script src="scripts/moto.module.js" ></script>
+    <script src="scripts/moto.module.js"></script>
 
-    <script src="scripts/login.controller.js" ></script>
-    <script src="scripts/logout.controller.js" ></script>
+    <script src="scripts/login.controller.js"></script>
+    <script src="scripts/logout.controller.js"></script>
     <script src="scripts/register.controller.js"></script>
     <script src="scripts/createprofile.controller.js"></script>
     <script src="scripts/profile.controller.js"></script>
     <script src="scripts/checkin.controller.js"></script>
     <script src="scripts/search.controller.js"></script>
     <script src="scripts/gservice.js"></script>
-    <script src="scripts/moto.config.js" ></script>
+    <script src="scripts/moto.config.js"></script>
 
     <title>Moto Destinations</title>
-    <base href="/"  />
+    <base href="/" />
 </head>
 
-<body >
+<body>
     <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/about">Moto Destinations</a>
-    </div>
-    <!-- controller for get route is logged in -->
-        <ul class="nav navbar-nav navbar-right" ng-controller="LogoutController as logout">
-          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span></span>Menu<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/checkin">Check In</a></li>
-              <li><a href="/search">Search</a></li>
-              <li><a href="/profile">Profile</a></li>
-              <li><a href='/about'> About</a></li>
-              <li ng-click="logout.logout()"><a> Logout</a></li>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/about">Moto Destinations</a>
+            </div>
+            <!-- controller for get route is logged in will go here -->
+            <ul class="nav navbar-nav navbar-right" ng-controller="LogoutController as logout">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span></span>Menu<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/checkin">Check In</a></li>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href='/about'> About</a></li>
+                        <li ng-click="logout.logout()"><a> Logout</a></li>
+                    </ul>
+                </li>
             </ul>
-          </li>
-          </ul>
-        <ul class="nav navbar-nav navbar-right" ng-controller="LogoutController as logout">
+            <ul class="nav navbar-nav navbar-right" ng-controller="LogoutController as logout">
 
-          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          <li ng-click="logout.logout()"><a><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
-        </ul>
-      </div>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li ng-click="logout.logout()"><a><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+            </ul>
+        </div>
     </nav>
 
-  <div class="container">
-    <h1 class="text-center">Moto Destinations</h1>
-    <!-- do i need controller here? -->
-      <ng-view ng-controller="CheckinController as checkin"></ng-view>
-      <div class="row">
-<footer class='foot'>
-    <div class="col-lg-12">
-      <div class="col-md-8">
-        <a href="/about">About</a> | <a href="/login">Login</a> | <a href="/register">Register</a>
-      </div>
-      <div class="col-md-4">
-        <p class="muted pull-right">© 2016 JS Mike. All rights reserved</p>
-      </div>
+    <div class="container">
+        <h1 class="text-center">Moto Destinations</h1>
+        <div ng-view class="view-div"></div>
+        <div class="row">
+            <footer class='foot'>
+                <div class="col-lg-12">
+                    <div class="col-md-8">
+                        <a href="/about">About</a> | <a href="/login">Login</a> | <a href="/register">Register</a>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="muted pull-right">© 2016 JS Mike. All rights reserved</p>
+                    </div>
+                </div>
+        </div>
+        </footer>
     </div>
-  </div>
-  </footer>
-  </div>
 
 
 </body>

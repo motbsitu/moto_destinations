@@ -18,24 +18,15 @@ angular.module('gservice', [])
         // --------------------------------------------------------------
         // Refresh the Map with new data. Function will take new latitude and longitude coordinates.
         googleMapService.refresh = function(latitude, longitude){
-
-            // Clears the holding array of locations
-            locations = [];
-
             // Set the selected lat and long equal to the ones provided on the refresh() call
             selectedLat = parseInt(latitude);
             selectedLong = parseInt(longitude);
-        //    console.log('selected lat', selectedLat);
-            // // Perform an AJAX call to get all of the records in the db.
-            $http.get('/moto.destination').success(function(response){
-
-                // Convert the results into Google Map Format
-              //  locations = convertToMapPoints(response);
-
+            $http.get('/').success(function(response){
                 // Then initialize the map.
                 initialize(latitude, longitude);
             }).error(function(){});
         };
+
 
     //     // --------------------------------------------------------------
     //     // Convert a JSON of users into map points
@@ -69,26 +60,68 @@ angular.module('gservice', [])
     // //     return locations;
     // };
 
-// Initializes the map
+// Initializes the map on checkin
 var initialize = function(latitude, longitude) {
-
     // Uses the selected lat, long as starting point
     var myLatLng = {lat: selectedLat, lng: selectedLong};
-  //  console.log('my latlng', myLatLng);
     // If map has not been created already...
     if (!map){
         // look for the map container
         var container = document.getElementById('maphere')
-
         // // if we can't find one, don't try to load the map
         if (!container) {
           return;
         }
-        // Create a new map and place in the index.html page
+        // Create a new map and place in the checkin.html page
         var map = new google.maps.Map(container, {
             center: myLatLng,
             zoom: 8
+        });
+    }
+    // Set initial location as a red marker
+    var initialLocation = new google.maps.LatLng(latitude, longitude);
 
+    var marker = new google.maps.Marker({
+        position: initialLocation,
+        map: map,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+    });
+    lastMarker = marker;
+
+};
+googleMapService.refreshSearch = function(latitude, longitude){
+    // Clears the holding array of locations
+    locations = [];
+    // Set the selected lat and long equal to the ones provided on the refresh() call
+    selectedLat = parseInt(latitude);
+    selectedLong = parseInt(longitude);
+//    console.log('selected lat', selectedLat);
+    // // Perform an AJAX call to get all of the records in the db.
+    $http.get('/moto.destination').success(function(response){
+        // Convert the results into Google Map Format
+      //  locations = convertToMapPoints(response);
+
+        // Then initialize the map.
+        initializeSearch(latitude, longitude);
+    }).error(function(){});
+};
+
+// Initializes the map on search
+var initializeSearch = function(latitude, longitude) {
+    // Uses the selected lat, long as starting point
+    var myLatLng = {lat: selectedLat, lng: selectedLong};
+      // If map has not been created already...
+    if (!map2){
+        // look for the map container
+        var container = document.getElementById('mapsearch')
+        // // if we can't find one, don't try to load the map
+        if (!container) {
+          return;
+        }
+        // Create a new map and place in the search.html page
+        var map2 = new google.maps.Map(container, {
+            center: myLatLng,
+            zoom: 8
         });
 
     }
@@ -115,12 +148,11 @@ var initialize = function(latitude, longitude) {
 
     var marker = new google.maps.Marker({
         position: initialLocation,
-        map: map,
+        map: map2,
         icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });
     lastMarker = marker;
 
 };
-
 return googleMapService;
 });
