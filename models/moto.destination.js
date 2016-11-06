@@ -3,6 +3,7 @@ var Schema      = mongoose.Schema;
 
 var DestSchema = new Schema({
   userId: {type: Schema.Types.ObjectId},
+  name: {type: String, required: true},
   destName: {type: String, required:true},
   destComment: {type: String},
   location: {type: [Number], required: true}

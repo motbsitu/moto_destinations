@@ -20,6 +20,9 @@ angular.module('motoApp').config(function($routeProvider, $locationProvider) {
   }).when('/search', {
     templateUrl: 'views/search.html',
     controller: 'SearchController as search'
+  }).when('/query', {
+    templateUrl: 'views/search.html',
+    controller: 'SearchController as search'
   }).otherwise({
     templateUrl: 'views/login.html',
     controller: 'LoginController as login'

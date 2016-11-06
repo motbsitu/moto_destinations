@@ -18,21 +18,26 @@
 
                   <div class="form-group">
                       <label for="distance">Max. Distance (miles)</label>
-                      <input type="text" class="form-control" id="distance" placeholder="500" ng-model="formData.distance">
+                      <input type="number" class="form-control" id="distance" placeholder="500" ng-model="search.formData.distance">
                   </div>
-                  <button type="findme" class="btn btn-success btn-block"  ng-disabled="addForm.$invalid">Search Destinations</button>
+                  <button type="findme" class="btn btn-success btn-block" ng-click="search.queryLocations()" ng-disabled="addForm.$invalid">Search Destinations</button>
             </div>
-
-            <h3 class="row">Saved Destinations</h3>
+              <div class="panel-heading">
+            <h2 class="row panel-title text-center">Saved Destinations</h2>
+          </div>
             <div class="row transp places" >
                 <table class="table table-striped" >
                   <thead>
                   <th>
-                    Place
+                    Destination
+                  </th>
+                  <th>
+                    Recommended By
                   </th>
                 </thead>
                 <tr ng-repeat="destination in search.destArray">
                   <td>{{destination.destName}},   {{destination.destComment}} </td>
+                  <td> {{destination.name}}</td>
                   </tr>
 
               </table>

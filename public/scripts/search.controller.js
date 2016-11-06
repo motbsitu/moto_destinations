@@ -21,6 +21,8 @@ function SearchController($http, $location, geolocation, gservice) {
     };
     ctrl.motodestinations();
 
+
+
     //mapping current location
         geolocation.getLocation().then(function(data){
             // Set the latitude and longitude equal to the HTML5 coordinates
@@ -31,5 +33,26 @@ function SearchController($http, $location, geolocation, gservice) {
 
             gservice.refreshSearch(ctrl.formData.latitude, ctrl.formData.longitude);
         });
+
+
+ctrl.queryLocations = function(){
+  console.log('button click');
+  queryBody = {
+      longitude: parseFloat(ctrl.formData.longitude),
+      latitude: parseFloat(ctrl.formData.latitude),
+      distance: parseFloat(ctrl.formData.distance)
+
+  };
+  console.log('queryBody search ctrl', queryBody);
+  $http.post('/search/query', queryBody)
+    .success(function(queryResults){
+      console.log('query results', queryResults);
+      gservice.refreshSearch(queryBody.latitude, queryBody.logitude, queryResults);
+    })
+    .error(function(queryResults){
+      console.log('error query', + queryResults);
+    })
+};
+
 
 }

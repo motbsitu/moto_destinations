@@ -30,6 +30,7 @@ router.post('/', function(req,res){
 
   var destination = new Destination(req.body);
   destination.userId = req.user.id;
+  destination.name = req.user.name;
 
   destination.save().then(function(destination){
       console.log('newly created destination', destination);

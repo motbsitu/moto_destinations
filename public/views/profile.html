@@ -9,7 +9,7 @@
     <div class="row transp">
         <div class="profiledetail row .col-md-3 .col-md-offset-3 pull-right">
         <label>Moto User</label>
-        <input type="text" class="form-control"  ng-model="profile.userprofile.name"/>
+        <p> {{profile.userprofile.name}}</p>
         <label>Moto User Email</label>
         <input type="text" class="form-control"  ng-model="profile.userprofile.email" />
         <label>Moto User Motorcycle(s)</label>
@@ -26,8 +26,9 @@
     <table class="table table-striped" >
       <thead>
       <th>
-        Place
+        Destination
       </th>
+      
     </thead>
     <tr ng-repeat="destination in profile.destArray">
       <td>{{destination.destName}},   {{destination.destComment}} </td>
