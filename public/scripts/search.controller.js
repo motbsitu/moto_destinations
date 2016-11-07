@@ -15,18 +15,17 @@ function SearchController($http, $location, geolocation, gservice) {
 
     ctrl.motodestQuery = function() {
 
-      // var longitude = parseFloat(ctrl.formData.longitude);
       queryBody = {
           longitude: parseFloat(ctrl.formData.longitude),
           latitude: parseFloat(ctrl.formData.latitude),
           distance: parseFloat(ctrl.formData.distance)
-
       };
-      //'/search/moto.destination', longitude, etc
-        $http.get('/search/moto.destination', queryBody)
+      // $http.get('/search/moto.destination', longitude, latitude, distance)
+        $http.get('/search/moto.destination?longitude='+ parseFloat(ctrl.formData.longitude) +
+         '&latitude='+ parseFloat(ctrl.formData.latitude) + '&distance='+ parseFloat(ctrl.formData.distance))
           .success(function(queryResults){
-                                  //  (latitude, longitu,)
             gservice.refreshSearch(queryBody.latitude, queryBody.longitude, queryResults);
+
           })
           .error(function(queryResults){
             console.log('error query', + queryResults);
