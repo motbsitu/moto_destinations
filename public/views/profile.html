@@ -3,10 +3,10 @@
     <div class="profilepic .col-xs-6 .col-md-4 clearfix ">
         <img ng-src="{{profile.userprofile.userimg}}" />
     </div>
-    <div class="userprof transp" >
+    <div class="userprof" >
         <label>Moto User Comments</label>
         <input type="text" class="form-control"  ng-model="profile.userprofile.comment"/>
-    <div class="row transp">
+    <div class="row">
         <div class="profiledetail row .col-md-3 .col-md-offset-3 pull-right">
         <label>Moto User</label>
         <p> {{profile.userprofile.name}}</p>
@@ -22,16 +22,16 @@
 
 
 <h2 class="row">Saved Destinations</h2>
-<div class="row transp places" >
+<div class="row places" >
     <table class="table table-striped" >
       <thead>
       <th>
         Destination
       </th>
-      
+
     </thead>
     <tr ng-repeat="destination in profile.destArray">
-      <td>{{destination.destName}},   {{destination.destComment}} </td>
+      <td><button type="button" class="btn btn-link">{{destination.destName}},   {{destination.destComment}} </button></td>
       </tr>
 
   </table>

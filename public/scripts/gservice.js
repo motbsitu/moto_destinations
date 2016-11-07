@@ -24,7 +24,7 @@ angular.module('gservice', [])
 
         // Functions
         // --------------------------------------------------------------
-        // Refresh the Map with new data. Function will take new latitude and longitude coordinates.
+        // Refresh the Map in checkin with new data. Function will take new latitude and longitude coordinates.
         googleMapService.refresh = function(latitude, longitude){
             // Set the selected lat and long equal to the ones provided on the refresh() call
             selectedLat = parseInt(latitude);
@@ -37,16 +37,13 @@ angular.module('gservice', [])
 
 
     //     // --------------------------------------------------------------
-    //     // Convert a JSON of users into map points
+    //     // Convert a JSON of destinations into map points
         var convertToMapPoints = function(response){
-          // console.log('response', response);
             // Clear the locations holder
             var locations = [];
-            console.log('locations', locations);
             // Loop through all of the JSON entries provided in the response
             for(var i= 0; i < response.length; i++) {
                 var destination = response[i];
-                // console.log('destination', destination);
                 // Create popup windows for each record
                 var  contentString =
                     '<p><b>Destination</b>: ' + destination.destName +
@@ -70,7 +67,7 @@ angular.module('gservice', [])
         return locations;
     };
 
-// Initializes the map on checkin
+// Initializes the map on checkin page
 var initialize = function(latitude, longitude) {
     // Uses the selected lat, long as starting point
     var myLatLng = {lat: selectedLat, lng: selectedLong};
@@ -100,28 +97,24 @@ var initialize = function(latitude, longitude) {
 
 };
 googleMapService.refreshSearch = function(latitude, longitude, filteredResults){
-    console.log('filteredResults', filteredResults);
     // Clears the holding array of locations
     locations = [];
     // Set the selected lat and long equal to the ones provided on the refresh() call
-    selectedLat = parseInt(latitude);
-    selectedLong = parseInt(longitude);
-   console.log('selected lat', selectedLat);
-    // // Perform an AJAX call to get all of the records in the db.
-    $http.get('/moto.destination').success(function(response){
-      //console.log('response', response);  comes back as html doc
+    selectedLat = parseFloat(latitude);
+    selectedLong = parseFloat(longitude);
+
         // Convert the results into Google Map Format
-       locations = convertToMapPoints(response);
+       locations = convertToMapPoints(filteredResults);
 
         // Then initialize the map.
-        initializeSearch(latitude, longitude);
-    }).error(function(){});
+        initializeSearch(selectedLat, selectedLong);
 };
 
 // Initializes the map on search
 var initializeSearch = function(latitude, longitude) {
     // Uses the selected lat, long as starting point
-    var myLatLng = {lat: selectedLat, lng: selectedLong};
+    var myLatLng = {lat: latitude, lng: longitude};
+
       // If map has not been created already...
     if (!map2){
         // look for the map container
@@ -141,17 +134,16 @@ var initializeSearch = function(latitude, longitude) {
     locations.forEach(function(n, i){
         var marker = new google.maps.Marker({
             position: n.latlon,
-            map: map,
+            map: map2,
             title: "Big Map",
             icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
         });
 
         // For each marker created, add a listener that checks for clicks
         google.maps.event.addListener(marker, 'click', function(e){
-
             // When clicked, open the selected marker's message
             currentSelectedMarker = n;
-            n.message.open(map, marker);
+            n.message.open(map2, marker);
         });
     });
 

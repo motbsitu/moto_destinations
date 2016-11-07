@@ -14,32 +14,30 @@
             </div>
             <div class="panel-body">
                 <form name="addForm" novalidate>
-
-
-                  <div class="form-group">
-                      <label for="distance">Max. Distance (miles)</label>
-                      <input type="number" class="form-control" id="distance" placeholder="500" ng-model="search.formData.distance">
-                  </div>
-                  <button type="findme" class="btn btn-success btn-block" ng-click="search.queryLocations()" ng-disabled="addForm.$invalid">Search Destinations</button>
+                    <div class="form-group">
+                        <label for="distance">Max. Distance (miles)</label>
+                        <input type="number" class="form-control" id="distance" placeholder="500" ng-model="search.formData.distance">
+                    </div>
+                    <button type="search" class="btn btn-success btn-block" ng-click="search.motodestQuery()" ng-disabled="addForm.$invalid">Search Destinations</button>
             </div>
-              <div class="panel-heading">
-            <h2 class="row panel-title text-center">Saved Destinations</h2>
-          </div>
-            <div class="row transp places" >
-                <table class="table table-striped" >
-                  <thead>
-                  <th>
-                    Destination
-                  </th>
-                  <th>
-                    Recommended By
-                  </th>
-                </thead>
-                <tr ng-repeat="destination in search.destArray">
-                  <td>{{destination.destName}},   {{destination.destComment}} </td>
-                  <td> {{destination.name}}</td>
-                  </tr>
+            <div class="panel-heading">
+                <h2 class="row panel-title text-center">Saved Destinations</h2>
+            </div>
+            <div class="panel-body places">
+                <table class="table table-striped">
+                    <thead>
+                        <th>
+                            Destination
+                        </th>
+                        <th>
+                            Recommended By
+                        </th>
+                    </thead>
+                    <tr ng-repeat="destination in search.destArray">
+                        <td>{{destination.destName}}, {{destination.destComment}} </td>
+                        <td> {{destination.name}}</td>
+                    </tr>
 
-              </table>
+                </table>
 
             </div>
