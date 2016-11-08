@@ -27,8 +27,8 @@ angular.module('gservice', [])
         // Refresh the Map in checkin with new data. Function will take new latitude and longitude coordinates.
         googleMapService.refresh = function(latitude, longitude){
             // Set the selected lat and long equal to the ones provided on the refresh() call
-            selectedLat = parseInt(latitude);
-            selectedLong = parseInt(longitude);
+            selectedLat = parseFloat(latitude);
+            selectedLong = parseFloat(longitude);
             $http.get('/').success(function(response){
                 // Then initialize the map.
                 initialize(latitude, longitude);
@@ -44,11 +44,17 @@ angular.module('gservice', [])
             // Loop through all of the JSON entries provided in the response
             for(var i= 0; i < response.length; i++) {
                 var destination = response[i];
+                var lat = destination.location[1];
+                var long = destination.location[0];
+                var url = 'http://www.google.com/maps/dir/Current+Location/' + lat + ',' + long;
+
+
                 // Create popup windows for each record
                 var  contentString =
                     '<p><b>Destination</b>: ' + destination.destName +
                     '<br><b>Comment</b>: ' + destination.destComment +
                     '<br><b>Recommended By:</b>: ' + destination.name +
+                    '<br><b>Get Directions</b>: ' + '<a class="marker-link" target="_blank" href="' + url +'">Directions</a>' +
                     '</p>';
 
                 // Converts each of the JSON records into Google Maps Location format (Note [Lat, Lng] format).
@@ -71,6 +77,7 @@ angular.module('gservice', [])
 var initialize = function(latitude, longitude) {
     // Uses the selected lat, long as starting point
     var myLatLng = {lat: selectedLat, lng: selectedLong};
+    console.log('myLatLng', myLatLng);
     // If map has not been created already...
     if (!map){
         // look for the map container
@@ -82,7 +89,12 @@ var initialize = function(latitude, longitude) {
         // Create a new map and place in the checkin.html page
         var map = new google.maps.Map(container, {
             center: myLatLng,
-            zoom: 8
+            zoom: 12,
+            zoomControl: true,
+            zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.SMALL
+		}
+
         });
     }
     // Set initial location as a red marker
@@ -136,6 +148,7 @@ var initializeSearch = function(latitude, longitude) {
             position: n.latlon,
             map: map2,
             title: "Big Map",
+
             icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
         });
 

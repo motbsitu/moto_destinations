@@ -22,14 +22,13 @@
 </div>
 
 
-<h2 class="row">Saved Destinations</h2>
+
 <div class="row places" >
     <table class="table table-striped" >
       <thead>
       <th>
-        Destination
+        My Saved Destinations
       </th>
-
     </thead>
     <tr ng-repeat="destination in profile.destArray">
       <td><a target="_blank" href="http://www.google.com/maps/place/{{destination.location[1]}},{{destination.location[0]}}"><button  type="button" class="btn btn-link">{{destination.destName}},   {{destination.destComment}} </button></a></td>

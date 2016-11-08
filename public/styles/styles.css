@@ -9,7 +9,7 @@ body{
     background-size: cover;
     -o-background-size: cover;*/
     margin: 0 0 100px; /* bottom = footer height */
-    padding: 1px;
+    padding: 30px 1px 1px 1px;
 }
 .container{
   margin-top: 30px;
@@ -64,6 +64,10 @@ table{
   color: blue;
   text-decoration: underline;
 }
+.marker-link{
+  color: blue;
+  text-decoration: underline;
+}
 .foot{
     font-size: 15px;
     color: black;
@@ -76,12 +80,12 @@ table{
 }
 #maphere {
     height: 500px;
-    width: 500px;
+    width: auto;
     border: 1px solid black;
 }
 #mapsearch {
     height: 500px;
-    width: 500px;
+    width: auto;
     border: 1px solid black;
 }
 .profiledetail{

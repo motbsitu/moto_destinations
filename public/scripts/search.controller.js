@@ -16,13 +16,13 @@ function SearchController($http, $location, geolocation, gservice) {
     ctrl.motodestQuery = function() {
 
       queryBody = {
-          longitude: parseFloat(ctrl.formData.longitude),
-          latitude: parseFloat(ctrl.formData.latitude),
+          longitude: parseFloat(ctrl.formData.longitude).toFixed(3),
+          latitude: parseFloat(ctrl.formData.latitude).toFixed(3),
           distance: parseFloat(ctrl.formData.distance)
       };
       // $http.get('/search/moto.destination', longitude, latitude, distance)
-        $http.get('/search/moto.destination?longitude='+ parseFloat(ctrl.formData.longitude) +
-         '&latitude='+ parseFloat(ctrl.formData.latitude) + '&distance='+ parseFloat(ctrl.formData.distance))
+        $http.get('/search/moto.destination?longitude='+ parseFloat(ctrl.formData.longitude).toFixed(3) +
+         '&latitude='+ parseFloat(ctrl.formData.latitude).toFixed(3) + '&distance='+ parseFloat(ctrl.formData.distance))
           .success(function(queryResults){
             console.log(queryResults);
             gservice.refreshSearch(queryBody.latitude, queryBody.longitude, queryResults);
@@ -30,7 +30,7 @@ function SearchController($http, $location, geolocation, gservice) {
           })
           .error(function(queryResults){
             console.log('error query', + queryResults);
-          
+
           })
       };
 
