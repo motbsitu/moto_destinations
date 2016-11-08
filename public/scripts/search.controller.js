@@ -24,11 +24,13 @@ function SearchController($http, $location, geolocation, gservice) {
         $http.get('/search/moto.destination?longitude='+ parseFloat(ctrl.formData.longitude) +
          '&latitude='+ parseFloat(ctrl.formData.latitude) + '&distance='+ parseFloat(ctrl.formData.distance))
           .success(function(queryResults){
+            console.log(queryResults);
             gservice.refreshSearch(queryBody.latitude, queryBody.longitude, queryResults);
-
+            ctrl.destArray = queryResults;
           })
           .error(function(queryResults){
             console.log('error query', + queryResults);
+          
           })
       };
 
@@ -37,7 +39,6 @@ function SearchController($http, $location, geolocation, gservice) {
         geolocation.getLocation().then(function(data){
             // Set the latitude and longitude equal to the HTML5 coordinates
             coords = {lat:data.coords.latitude, long:data.coords.longitude};
-            console.log('browser thinks we are here', coords);
             // coords to number
             ctrl.formData.longitude = parseFloat(coords.long).toFixed(3);
             ctrl.formData.latitude = parseFloat(coords.lat).toFixed(3);

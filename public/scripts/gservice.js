@@ -144,6 +144,7 @@ var initializeSearch = function(latitude, longitude) {
             // When clicked, open the selected marker's message
             currentSelectedMarker = n;
             n.message.open(map2, marker);
+            //window.location.href = "http://www.google.com/maps/place/n.location[1],n.location[0]";
         });
     });
 

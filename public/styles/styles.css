@@ -52,6 +52,18 @@ h2{
 a{
   color: black;
 }
+table{
+  table-layout:fixed;
+  /*word-wrap: break-word;*/
+
+}
+.text-left{
+  text-align: left !important;
+  border: none;
+  background-color: transparent;
+  color: blue;
+  text-decoration: underline;
+}
 .foot{
     font-size: 15px;
     color: black;

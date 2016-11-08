@@ -1,8 +1,8 @@
 <h2 class="row">Profile</h2>
 <div class="row ">
-    <div class="profilepic .col-xs-6 .col-md-4 clearfix ">
+    <!-- <div class="profilepic .col-xs-6 .col-md-4 clearfix ">
         <img ng-src="{{profile.userprofile.userimg}}" />
-    </div>
+    </div> -->
     <div class="userprof" >
         <label>Moto User Comments</label>
         <input type="text" class="form-control"  ng-model="profile.userprofile.comment"/>
@@ -17,7 +17,8 @@
           </div>
         </div>
     </div>
-    <button type="button"  class="btn btn-primary" ng-click="profile.motouserupdate()"> UPDATE PROFILE</button>
+    <button type="button" href="#myModalUpdate" data-toggle="modal"  class="btn btn-primary" ng-click="profile.motouserupdate()"> UPDATE PROFILE</button>
+
 </div>
 
 
@@ -31,9 +32,27 @@
 
     </thead>
     <tr ng-repeat="destination in profile.destArray">
-      <td><button type="button" class="btn btn-link">{{destination.destName}},   {{destination.destComment}} </button></td>
+      <td><a target="_blank" href="http://www.google.com/maps/place/{{destination.location[1]}},{{destination.location[0]}}"><button  type="button" class="btn btn-link">{{destination.destName}},   {{destination.destComment}} </button></a></td>
       </tr>
 
   </table>
 
 </div>
+
+<div id="myModalUpdate" class="modal fade">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   <h4 class="modal-title">Confirmation</h4>
+               </div>
+               <div class="modal-body">
+                   <p>Profile now updated!</p>
+                   <!-- <p class="text-warning"><small>You can check the favorites tab above to check your list.</small></p> -->
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+           </div>
+       </div>
+   </div>

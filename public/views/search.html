@@ -16,15 +16,15 @@
                 <form name="addForm" novalidate>
                     <div class="form-group">
                         <label for="distance">Max. Distance (miles)</label>
-                        <input type="number" class="form-control" id="distance" placeholder="500" ng-model="search.formData.distance">
+                        <input type="number" class="form-control" id="distance" placeholder="100" ng-model="search.formData.distance" required>
                     </div>
                     <button type="search" class="btn btn-success btn-block" ng-click="search.motodestQuery()" ng-disabled="addForm.$invalid">Search Destinations</button>
             </div>
             <div class="panel-heading">
-                <h2 class="row panel-title text-center">Saved Destinations</h2>
+                <h2 class="row panel-title text-center">Destinations</h2>
             </div>
-            <div class="panel-body places">
-                <table class="table table-striped">
+            <div class="panel-body places table-responsive">
+                <table class="table table-striped ">
                     <thead>
                         <th>
                             Destination
@@ -34,10 +34,10 @@
                         </th>
                     </thead>
                     <tr ng-repeat="destination in search.destArray">
-                        <td>{{destination.destName}}, {{destination.destComment}} </td>
+                        <td><a target="_blank" href="http://www.google.com/maps/place/{{destination.location[1]}},{{destination.location[0]}}"><button class="text-left" type="button" class="btn btn-link">{{destination.destName}}, <br>{{destination.destComment}}</button></a> </td>
                         <td> {{destination.name}}</td>
                     </tr>
 
                 </table>
-
+            </div>
             </div>
