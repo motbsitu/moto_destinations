@@ -5,9 +5,9 @@ router.post('/', passport.authenticate('local'), function(req, res) {
   res.sendStatus(200);
 });
 
-router.get('/', function (req, res){
-  res.send(req.isAuthenticated());
-})
+// router.get('/', function (req, res){
+//   res.send(req.isAuthenticated());
+// })
 
 
 

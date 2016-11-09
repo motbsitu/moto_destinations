@@ -51,9 +51,12 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));
 });
 
+app.get('/authenticated', ensureAuthenticated);
+
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname, 'public/views/index.html'));
 });
+
 
 // everything beyond this point must be authenticated
 app.use(ensureAuthenticated);

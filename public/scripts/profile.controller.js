@@ -27,7 +27,7 @@ function ProfileController($http, $location) {
       .then(function(response) {
           //put it on controller to make avail in html
           controller.destArray = response.data;
-          console.log(controller.destArray);
+          // console.log(controller.destArray);
       }, function(error) {});
   };
   controller.motodestinations();

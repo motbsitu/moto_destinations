@@ -1,1 +1,1 @@
-angular.module('motoApp', ['ngRoute', 'geolocation', 'gservice']);
+angular.module('motoApp', ['ngRoute', 'geolocation', 'gservice', 'angularReverseGeocode']);

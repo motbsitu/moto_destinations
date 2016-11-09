@@ -77,7 +77,7 @@ angular.module('gservice', [])
 var initialize = function(latitude, longitude) {
     // Uses the selected lat, long as starting point
     var myLatLng = {lat: selectedLat, lng: selectedLong};
-    console.log('myLatLng', myLatLng);
+    // console.log('myLatLng', myLatLng);
     // If map has not been created already...
     if (!map){
         // look for the map container
@@ -157,7 +157,6 @@ var initializeSearch = function(latitude, longitude) {
             // When clicked, open the selected marker's message
             currentSelectedMarker = n;
             n.message.open(map2, marker);
-            //window.location.href = "http://www.google.com/maps/place/n.location[1],n.location[0]";
         });
     });
 

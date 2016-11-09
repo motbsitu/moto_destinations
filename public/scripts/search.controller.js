@@ -12,6 +12,21 @@ function SearchController($http, $location, geolocation, gservice) {
     ctrl.formData.latitude = 39.500;
     ctrl.formData.longitude = -98.350;
 
+    $http.get('/authenticated').success(function(){
+    //mapping current location
+        geolocation.getLocation().then(function(data){
+            // Set the latitude and longitude equal to the HTML5 coordinates
+            coords = {lat:data.coords.latitude, long:data.coords.longitude};
+            // coords to number
+            ctrl.formData.longitude = parseFloat(coords.long).toFixed(3);
+            ctrl.formData.latitude = parseFloat(coords.lat).toFixed(3);
+
+            gservice.refreshSearch(ctrl.formData.latitude, ctrl.formData.longitude, []);
+        });
+}).error(function(error){
+    $location.path('/login');
+});
+
 
     ctrl.motodestQuery = function() {
 
@@ -34,17 +49,6 @@ function SearchController($http, $location, geolocation, gservice) {
           })
       };
 
-
-    //mapping current location
-        geolocation.getLocation().then(function(data){
-            // Set the latitude and longitude equal to the HTML5 coordinates
-            coords = {lat:data.coords.latitude, long:data.coords.longitude};
-            // coords to number
-            ctrl.formData.longitude = parseFloat(coords.long).toFixed(3);
-            ctrl.formData.latitude = parseFloat(coords.lat).toFixed(3);
-
-            gservice.refreshSearch(ctrl.formData.latitude, ctrl.formData.longitude, []);
-        });
 
 
 

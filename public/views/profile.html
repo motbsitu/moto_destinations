@@ -29,9 +29,15 @@
       <th>
         My Saved Destinations
       </th>
+      <th>
+        
+      </th>
     </thead>
     <tr ng-repeat="destination in profile.destArray">
       <td><a target="_blank" href="http://www.google.com/maps/place/{{destination.location[1]}},{{destination.location[0]}}"><button  type="button" class="btn btn-link">{{destination.destName}},   {{destination.destComment}} </button></a></td>
+      <td>
+        <reverse-geocode lat="{{destination.location[1]}}" lng="{{destination.location[0]}}"></reverse-geocode>
+      </td>
       </tr>
 
   </table>

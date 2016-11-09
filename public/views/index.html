@@ -1,3 +1,4 @@
+ju
 <!DOCTYPE html>
 <html class="full" ng-app="motoApp">
 
@@ -16,6 +17,7 @@
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
     <script src="vendors/angularjs-geolocation.min.js"></script>
+    <script src="vendors/angular-reverse-geocode.js"></script>
     <script src="scripts/moto.module.js"></script>
 
     <script src="scripts/login.controller.js"></script>
@@ -33,47 +35,54 @@
 </head>
 
 <body>
+    <div class="wrapper">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
 
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/about">Moto Destinations</a>
-            </div>
-            <!-- controller for get route is logged in will go here -->
-            <ul class="nav navbar-nav navbar-right" ng-controller="LogoutController as logout">
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span></span>Menu<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/checkin">Check In</a></li>
-                        <li><a href="/search">Search</a></li>
-                        <li><a href="/profile">Profile</a></li>
-                        <li><a href='/about'> About</a></li>
-                        <li ng-click="logout.logout()"><a> Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right" ng-controller="LogoutController as logout">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <button type="button" class="navbar-toggle navbar-inverse" data-toggle="collapse" data-target=".navbar-collapse">Menu </button>
 
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li ng-click="logout.logout()"><a><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
-            </ul>
-
-    </nav>
-
-        <div class="container">
-            <h1 class="text-center">Moto Destinations</h1>
-        <div ng-view class="view-div"></div>
-
-        <div class="row">
-            <footer class='foot'>
-                <div class="col-lg-12">
-                    <div class="col-md-8">
-                        <a href="/about">About</a> | <a href="/login">Login</a> | <a href="/register">Register</a>
-                    </div>
-                    <div class="col-md-4">
-                        <p class="muted pull-right">© 2016 JS Mike. All rights reserved</p>
-                    </div>
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/about">Moto Destinations</a>
                 </div>
-        </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right" ng-controller="LogoutController as logout">
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span></span>Menu<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/checkin">Check In</a></li>
+                                <li><a href="/search">Search</a></li>
+                                <li><a href="/profile">Profile</a></li>
+                                <li><a href='/about'> About</a></li>
+                                <li ng-click="logout.logout()"><a> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" ng-controller="LogoutController as logout">
+                        <li ng-controller="ProfileController as profile"><a>Welcome {{profile.userprofile.name}}!</a>
+                        </li>
+                        <!-- <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+                        <li ng-click="logout.logout()"><a><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    <h1 class="text-center">Moto Destinations</h1>
+    <div ng-view class="view-div"></div>
+  </div>
+
+    <div class="row navbar navbar-fixed-bottom">
+        <footer class='foot'>
+            <div class="col-lg-12">
+                <div class="col-md-8">
+                    <a href="/about">About</a> | <a href="/login">Login</a> | <a href="/register">Register</a>
+                </div>
+                <div class="col-md-4">
+                    <p class="muted pull-right">© 2016 JS Mike. All rights reserved</p>
+                </div>
+            </div>
+
         </footer>
     </div>
 

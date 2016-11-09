@@ -9,7 +9,10 @@ body{
     background-size: cover;
     -o-background-size: cover;*/
     margin: 0 0 100px; /* bottom = footer height */
-    padding: 30px 1px 1px 1px;
+    padding: 30px 1px 70px 1px;
+}
+.navbar-inverse{
+  color:white;
 }
 .container{
   margin-top: 30px;
@@ -21,7 +24,7 @@ body{
 .background-moto{
   background-image: url('../images/photo2.jpg');
   background-size: cover;
-  height: 1000px;
+  height: 100%;
   width: 100%;
 }
 .about{
@@ -38,16 +41,13 @@ h2{
 .dropdown{
   font-size: 25px;
 }
-.transp{
+.about{
   margin: 30px;
-    background-color: #ffffff;
-    opacity: 0.3;
-    filter: alpha(opacity=60);
+  color: white;
 }
-.transp.transbox p{
-  margin: 5%;
-    font-weight: bold;
-    color: #000000;
+.about-login{
+  color: white;
+  text-decoration: underline;
 }
 a{
   color: black;
@@ -68,6 +68,7 @@ table{
   color: blue;
   text-decoration: underline;
 }
+
 .foot{
     font-size: 15px;
     color: black;

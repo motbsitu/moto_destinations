@@ -1,0 +1,44 @@
+<!-- Map and Side Panel -->
+<div class="row content">
+    <!-- Google Map -->
+    <div class="col-md-7">
+        <div id="mapsearch"></div>
+    </div>
+
+    <div class="col-md-5">
+
+        <!-- Creates Main Panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title text-center">Search For Destinations Near Me </span></h2>
+            </div>
+            <div class="panel-body">
+                <form name="addForm" novalidate>
+                    <div class="form-group">
+                        <label for="distance">Max. Distance (miles)</label>
+                        <input type="number" class="form-control" id="distance" placeholder="100" ng-model="search.formData.distance" required>
+                    </div>
+                    <button type="search" class="btn btn-success btn-block" ng-click="search.motodestQuery()" ng-disabled="addForm.$invalid">Search Destinations</button>
+            </div>
+            <div class="panel-heading">
+                <h2 class="row panel-title text-center">Destinations</h2>
+            </div>
+            <div class="panel-body places table-responsive">
+                <table class="table table-striped ">
+                    <thead>
+                        <th>
+                            Destination
+                        </th>
+                        <th>
+                            Recommended By
+                        </th>
+                    </thead>
+                    <tr ng-repeat="destination in search.destArray">
+                        <td><a target="_blank" href="http://www.google.com/maps/place/{{destination.location[1]}},{{destination.location[0]}}">
+                        <button class="text-left" type="button" class="btn btn-link">{{destination.destName}}, <br>{{destination.destComment}}</button></a> </td>
+                        <td> {{destination.name}}</td>
+                    </tr>
+
+                </table>
+            </div>
+            </div>
