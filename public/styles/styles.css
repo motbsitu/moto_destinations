@@ -3,23 +3,27 @@ html{
   min-height: 100%;
 }
 body{
-    /*background: url('../images/photo2.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;*/
-    margin: 0 0 100px; /* bottom = footer height */
-    padding: 30px 1px 70px 1px;
+    /*margin: 0 0 100px; /* bottom = footer height */
+    padding: 30px 15px 70px 15px;
+    font-family: 'Work Sans', sans-serif;
 }
 .navbar-inverse{
   color:white;
 }
-.container{
-  margin-top: 30px;
+.wrapper{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+    /* Negative indent footer by it's height */
+  margin: 0 auto -35px 1px;
+}
+.details{
+  font-size: 20px;
 }
 .view-div{
   height: 100%;
   width: 100%;
+  padding: 15px;
 }
 .background-moto{
   background-image: url('../images/photo2.jpg');
@@ -27,17 +31,22 @@ body{
   height: 100%;
   width: 100%;
 }
+.register{
+  font-size: 15px;
+  text-decoration:underline;
+}
 .about{
   width: 500px;
+}
+.title{
+  margin-bottom: 5px;
 }
 h1{
   font-size: 50px;
   color: black;
   font-weight: bolder;
 }
-h2{
-  color: white;
-}
+
 .dropdown{
   font-size: 25px;
 }
@@ -45,17 +54,12 @@ h2{
   margin: 30px;
   color: white;
 }
-.about-login{
-  color: white;
-  text-decoration: underline;
-}
+
 a{
   color: black;
 }
 table{
   table-layout:fixed;
-  /*word-wrap: break-word;*/
-
 }
 .text-left{
   text-align: left !important;
@@ -69,16 +73,13 @@ table{
   text-decoration: underline;
 }
 
-.foot{
-    font-size: 15px;
-    color: black;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-    overflow:hidden;
+#footer{
+  position: relative;
+  height: 35px;
 }
+
+
+
 #maphere {
     height: 500px;
     width: auto;
@@ -92,4 +93,5 @@ table{
 .profiledetail{
   width: 50%;
   color: black;
+  margin-left: 20px;
 }

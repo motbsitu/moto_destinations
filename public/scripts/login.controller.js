@@ -14,6 +14,7 @@ function LoginController($http, $location) {
       $location.path('/profile');
     }, function(error) {
       console.log('error loggin in', error);
+        alert("Password or username are incorrect, or you are not registered");
     });
   };
 

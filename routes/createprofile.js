@@ -18,6 +18,7 @@ router.post('/', function(req, res) {
 
   }).catch(function(err){
     console.log('Error in /register', err);
+  
     res.sendStatus(500);
   });
 });
