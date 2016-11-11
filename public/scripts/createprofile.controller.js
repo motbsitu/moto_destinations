@@ -2,11 +2,10 @@ angular.module('motoApp')
 .controller('CreateprofileController', CreateprofileController);
 
 function CreateprofileController($http, $location) {
-  console.log('CreateprofileController loaded');
+
   var ctrl = this;
 
   ctrl.createprofile = function() {
-    //console.log('creating new user profile');
     $http.post('/createprofile', {
       name: ctrl.name,
       motorcycle: ctrl.motorcycle,

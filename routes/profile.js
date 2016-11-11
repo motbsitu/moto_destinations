@@ -56,5 +56,35 @@ router.get('/moto.destination', function(req,res){
   });
 });
 
+//route to update destination name and comment
+router.put('/moto.destination/:id', function(req,res){
+  Destination.findById(req.params.id, function(err, destination){
+    if (err){
+      res.sendStatus(500);
+      return;
+    }
+    destination.destComment = req.body.comment;
+    destination.destName = req.body.name;
+
+    destination.save(function (err, updatedDestination){
+      if (err){
+        res.sendStatus(500);
+        return;
+      }res.send(updatedDestination);
+    });
+
+  });
+});
+
+//route to delete destination
+router.delete('/moto.destination/:id', function(req, res){
+  Destination.findByIdAndRemove(req.params.id, function(err,destination){
+    if (err){
+      res.sendStatus(500);
+      return;
+    }res.sendStatus(204);
+  });
+});
+
 
 module.exports = router;

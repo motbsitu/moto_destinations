@@ -26,14 +26,12 @@ router.get('/moto.users', function(req,res){
 });
 
 router.post('/', function(req,res){
-  console.log('req.body',req.body);
 
   var destination = new Destination(req.body);
   destination.userId = req.user.id;
   destination.name = req.user.name;
 
   destination.save().then(function(destination){
-      console.log('newly created destination', destination);
       res.sendStatus(201);
     }).catch(function(err){
       console.log('error in post destination', err);

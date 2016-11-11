@@ -1,4 +1,4 @@
-ju
+
 <!DOCTYPE html>
 <html class="full" ng-app="motoApp">
 
@@ -36,9 +36,10 @@ ju
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="container">
+      <div class="wrapper">
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                       <span class="sr-only"><a>Menu</a></span>
@@ -55,36 +56,29 @@ ju
                         <li><a data-toggle="collapse" data-target=".navbar-collapse" href="/checkin"><span class="glyphicon glyphicon-map-marker"></span>Check In</a></li>
                         <li><a data-toggle="collapse" data-target=".navbar-collapse" href="/search"><span class="glyphicon glyphicon-search"></span>Search</a></li>
                         <li><a data-toggle="collapse" data-target=".navbar-collapse" href="/profile"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-                        <li ng-click="logout.logout()"><a data-toggle="collapse" data-target=".navbar-collapse"> <span class="glyphicon glyphicon-log-out"></span>Logout</a>
+                        <li ng-click="logout.logout()">
+                            <a data-toggle="collapse" data-target=".navbar-collapse"> <span class="glyphicon glyphicon-log-out"></span>Logout</a>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
-
-
 
         <div class="title">
-            <h1 class="text-center">Moto Destinations</h1>
+            <h1>Moto Destinations</h1>
         </div>
 
         <div ng-view class="view-div"></div>
+
     </div>
 
-    <div class="container">
-        <div id="footer" class="row">
-            <div class="col-lg-12">
-                <div class="col-md-8">
-                    <a href="/about">About</a> | <a href="/login">Login</a> | <a href="/register">Register</a>
-                </div>
-                <div class="col-md-4">
-                    <p class="muted pull-right">© 2016 JS Mike. All rights reserved</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
+  <footer>
+      <div id="foot">
+          <a href="/about">About</a> | <a href="/login">Login</a> | <a href="/register">Register</a>
 
-
+          <p class="muted pull-right">© 2016 JS Mike. All rights reserved</p>
+      </div>
+  </footer>
 </body>
 
 </html>

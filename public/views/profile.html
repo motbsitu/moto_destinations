@@ -1,59 +1,73 @@
 <h2>Profile</h2>
-<div class="profiledetail  row ">
+<div>
     <!-- <div class="profilepic .col-xs-6 .col-md-4 clearfix ">
         <img ng-src="{{profile.userprofile.userimg}}" />
     </div> -->
     <div class="row ">
-        <form>
-            <label>Moto User</label>
-            <p class="details"> {{profile.userprofile.name}}</p>
-            <label>Moto User Comments</label>
-            <input type="text" class="form-control" ng-model="profile.userprofile.comment" />
-            <label>Moto User Email</label>
-            <input type="text" class=" form-control" ng-model="profile.userprofile.email" />
-            <label>Moto User Motorcycle(s)</label>
-            <input type="text" class="form-control" ng-model="profile.userprofile.motorcycle" />
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <form>
+                <label>Moto User</label>
+                <p class="details"> {{profile.userprofile.name}}</p>
+                <label>Moto User Comments</label>
+                <input type="text" class="form-control" ng-model="profile.userprofile.comment" />
+                <label>Moto User Email</label>
+                <input type="text" class=" form-control" ng-model="profile.userprofile.email" />
+                <label>Moto User Motorcycle(s)</label>
+                <input type="text" class="form-control" ng-model="profile.userprofile.motorcycle" />
+            </form>
+            <button type="button" href="#myModalUpdate" data-toggle="modal" class="btn btn-primary prof-button" ng-click="profile.motouserupdate()"><span class="glyphicon glyphicon-floppy-save"></span>  Save Changes to Profile</button>
+        </div>
 
-        </form>
-    </div>
-    <div class="row">
-        <button type="button" href="#myModalUpdate" data-toggle="modal" class="btn btn-primary" ng-click="profile.motouserupdate()"> Save Changes to Profile</button>
-        <button class="btn btn-success"><a  href="/search">Search for Destinations Near You</a></button>
-        <button class="btn btn-info"><a  href="/checkin">Check In to your Current Location</a></button>
-    </div>
+        <div class="col-md-4">
 
-</div>
-
-<div class="row">
-    <div class=".col-md-4 .col-md-offset-4">
-
-    </div>
-</div>
-<div class="row">
-</div>
-
-<div class="container">
-    <div class="row places">
-        <div class="table-responsive">
-          <h3>My Saved Destinations</h3>
-            <table class="table table-striped">
-                <thead>
-                    <th>
-                        Click to Link to Directions
-                    </th>
-                    <th>
-                    </th>
-                </thead>
-                <tr ng-repeat="destination in profile.destArray">
-                    <td><a target="_blank" href="http://www.google.com/maps/dir/Current+Location/{{destination.location[1]}},{{destination.location[0]}}"><button type="button" class="btn btn-link">{{destination.destName}},   {{destination.destComment}} </button></a></td>
-                    <td>
-                        <reverse-geocode lat="{{destination.location[1]}}" lng="{{destination.location[0]}}"></reverse-geocode>
-                    </td>
-                </tr>
-            </table>
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <button class="prof-button btn btn-success"><span class="glyphicon glyphicon-search"></span><a  href="/search">Search for Destinations Near You</a></button>
+            <button class="prof-button btn btn-info"><a  href="/checkin"><span class="glyphicon glyphicon-map-marker"></span>Check In to your Current Location</a></button>
         </div>
     </div>
 </div>
+
+
+<div class="table-responsive">
+    <h3>My Saved Destinations</h3>
+
+    <table class="table table-striped">
+        <thead>
+                <th>Modify Name </th>
+                <th>Modify Comments </th>
+                <th>Click for Directions </th>
+                <th> Change Destination </th>
+                <th>Remove Destination </th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="destination in profile.destArray">
+                <div class="col-sm-12 col-md-4">
+                    <td><input type="text" class- "form-control" ng-model="destination.destName" /></td>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <td><input type="text" class- "form-control" ng-model="destination.destComment" /></td>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <td><a target="_blank" href="http://www.google.com/maps/dir/Current+Location/{{destination.location[1]}},{{destination.location[0]}}">Directions to {{destination.destName}}</a></td>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <td>
+                        <button type="button" href="#myModalUpdate" data-toggle="modal" class="btn btn-primary" ng-click="profile.motodestinationupdate($index)"><span class="glyphicon glyphicon-floppy-save"></span> Save Changes</button>
+                    </td>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <td>
+                        <button type="button" href="#myModalDelete" data-toggle="modal" class="btn btn-warning" ng-click="profile.motodestinationsfindId($index)"><span class="glyphicon glyphicon-trash"></span> Remove</button>
+                    </td>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
 
 <div id="myModalUpdate" class="modal fade">
     <div class="modal-dialog">
@@ -67,6 +81,27 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal HTML Bootstrap for Delete-->
+<div id="myModalDelete" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this Destination?</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="profile.motodestinationsdelete()">Yes</button>
             </div>
         </div>
     </div>
