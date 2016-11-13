@@ -172,4 +172,6 @@ var initializeSearch = function(latitude, longitude) {
 
 };
 return googleMapService;
+
+
 });

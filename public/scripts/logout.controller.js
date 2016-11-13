@@ -1,7 +1,7 @@
 angular.module('motoApp')
 .controller('LogoutController', LogoutController);
 
-function LogoutController($http, $location) {
+function LogoutController($http, $location, profileservice) {
   //console.log('LogoutController loaded');
   var ctrl = this;
 
@@ -9,6 +9,7 @@ function LogoutController($http, $location) {
 
     $http.get('/logout')
     .then(function(){
+      profileservice.user.name = "";
       $location.path('/login');
     }, function(error) {
       console.log('error logging out', error);

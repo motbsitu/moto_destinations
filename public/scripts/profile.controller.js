@@ -1,14 +1,16 @@
 angular.module('motoApp')
     .controller('ProfileController', ProfileController);
 
-function ProfileController($http, $location) {
+function ProfileController($http, $location, profileservice) {
     var controller = this;
     var destArray = [];
     var idToDelete = "";
+    controller.user = profileservice.user;
+
     controller.motouser = function() {
-        $http.get('/profile/moto.users').then(function(response) {
+       profileservice.loggedin().then(function(response) {
             //put it on controller to make avail in html
-            controller.userprofile = response.data;
+            controller.userprofile = response;
         }, function(error) {
             $location.path('/login');
         });
@@ -48,7 +50,7 @@ function ProfileController($http, $location) {
                 controller.motodestinations();
             }, function(error) {});
     };
-    
+
 //find id for delete
     controller.motodestinationsfindId = function(index){
       idToDelete = controller.destArray[index]._id

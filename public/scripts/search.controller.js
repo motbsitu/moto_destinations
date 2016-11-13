@@ -35,11 +35,9 @@ function SearchController($http, $location, geolocation, gservice) {
           latitude: parseFloat(ctrl.formData.latitude).toFixed(3),
           distance: parseFloat(ctrl.formData.distance)
       };
-      // $http.get('/search/moto.destination', longitude, latitude, distance)
         $http.get('/search/moto.destination?longitude='+ parseFloat(ctrl.formData.longitude).toFixed(3) +
          '&latitude='+ parseFloat(ctrl.formData.latitude).toFixed(3) + '&distance='+ parseFloat(ctrl.formData.distance))
           .success(function(queryResults){
-            console.log(queryResults);
             gservice.refreshSearch(queryBody.latitude, queryBody.longitude, queryResults);
             ctrl.destArray = queryResults;
           })
@@ -50,7 +48,11 @@ function SearchController($http, $location, geolocation, gservice) {
       };
 
 
-
+      //trying to get list items to open info window
+      // ctrl.openInfoWindow = function(e, selectedMarker){
+      //   e.preventDefault();
+      //   google.maps.event.trigger(selectedMarker, "click");
+      // }
 
 
 }

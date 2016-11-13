@@ -41,7 +41,7 @@
                     </thead>
                     <tr ng-repeat="destination in search.destArray">
                         <td><a target="_blank" href="http://www.google.com/maps/place/{{destination.location[1]}},{{destination.location[0]}}">
-                        <button class="text-left" type="button" class="btn btn-link">{{destination.destName}}, <br>{{destination.destComment}}</button></a> </td>
+                        {{destination.destName}}, <br>{{destination.destComment}}</a> </td>
                         <td> {{destination.name}}</td>
                     </tr>
 

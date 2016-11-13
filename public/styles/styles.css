@@ -3,10 +3,8 @@ html{
   min-height: 100%;
 }
 body{
-    /*margin: 0 0 100px; /* bottom = footer height */
     padding: 30px 15px 70px 15px;
     font-family: 'Work Sans', sans-serif;
-    /*margin: 15px auto 35px 1px;*/
 }
 .wrapper{
   min-height: 100%;
@@ -15,9 +13,15 @@ body{
     /* Negative indent footer by it's height */
   margin: 0 auto -35px 1px;
 }
-
+.navbar-right{
+  margin-right: 15px;
+}
 .prof-button{
   margin: 15px;
+}
+
+.center{
+  text-align: center;
 }
 .details{
   font-size: 20px;
@@ -35,11 +39,17 @@ body{
   width: 100%;
 }
 .register{
-  font-size: 15px;
+  font-size: 12px;
   text-decoration:underline;
+  text-align: center;
 }
 .about{
   color: white;
+  font-size: 15px;
+
+}
+h2.about{
+  font-size: 23px;
 }
 .title{
   margin-top: 15px;
@@ -67,6 +77,9 @@ td{
   vertical-align: top;
 }
 
+.wrap{
+  word-wrap: break-word;
+}
 .text-left{
   text-align: left !important;
   border: none;

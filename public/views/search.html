@@ -5,7 +5,7 @@
         <div id="mapsearch"></div>
         <div>
           <p class="details">
-            Click on map markers for more details and to link to directions.
+            Click on map markers or destinations to link to directions.
           </p>
         </div>
     </div>
@@ -31,19 +31,15 @@
             <div class="panel-body places table-responsive">
                 <table class="table table-striped ">
                     <thead>
-                        <th>
-                            Destination
-                        </th>
-                        <th>
-                            Recommended By
-                        </th>
+                        <th>Destination</th>
+                        <th>Recommended By</th>
                     </thead>
                     <tr ng-repeat="destination in search.destArray">
-                        <td><a target="_blank" href="http://www.google.com/maps/dir/Current+Location/{{destination.location[1]}},{{destination.location[0]}}">
-                        <button class="text-left" type="button" class="btn btn-link">{{destination.destName}}, <br>{{destination.destComment}}</button></a> </td>
+                      <!-- potential for click opening infowindow <a href="#" ng-click="search.openInfoWindow($event, marker)"-->
+                        <td class="wrap"><a target="_blank" href="http://www.google.com/maps/dir/Current+Location/{{destination.location[1]}},{{destination.location[0]}}">
+                          {{destination.destName}}, <br>{{destination.destComment}}</a></td>
                         <td> {{destination.name}}</td>
                     </tr>
-
                 </table>
             </div>
             </div>
