@@ -54,7 +54,7 @@ angular.module('gservice', [])
                     '<p><b>Destination</b>: ' + destination.destName +
                     '<br><b>Comment</b>: ' + destination.destComment +
                     '<br><b>Recommended By:</b>: ' + destination.name +
-                    '<br><b>Get Directions</b>: ' + '<a class="marker-link" target="_blank" href="' + url +'">Directions</a>' +
+                    '<br><b>Get Directions</b>: ' + '<a class="marker-link" href="' + url +'">Directions</a>' +
                     '</p>';
 
                 // Converts each of the JSON records into Google Maps Location format (Note [Lat, Lng] format).

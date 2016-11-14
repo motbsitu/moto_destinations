@@ -36,7 +36,7 @@
                     </thead>
                     <tr ng-repeat="destination in search.destArray">
                       <!-- potential for click opening infowindow <a href="#" ng-click="search.openInfoWindow($event, marker)"-->
-                        <td class="wrap"><a target="_blank" href="http://www.google.com/maps/dir/Current+Location/{{destination.location[1]}},{{destination.location[0]}}">
+                        <td class="wrap"><a href="http://www.google.com/maps/dir/Current+Location/{{destination.location[1]}},{{destination.location[0]}}">
                           {{destination.destName}}, <br>{{destination.destComment}}</a></td>
                         <td> {{destination.name}}</td>
                     </tr>
