@@ -15,7 +15,7 @@ This is a mobile friendly application for users to record their favorite destina
 Application built using the MEAN Stack (MongoDB, Express, Angular and Node).  Google Maps API, HTML5 Geolocation, Bootstrap, Passport.
 
 ##Configure Instructions
-TBD
+npm install
 
 ##Near Future Goals
 - Better map focus (zoom to all selected destinations)

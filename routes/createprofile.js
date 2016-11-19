@@ -2,7 +2,6 @@ const router = require('express').Router();
 const User = require('../models/moto.user');
 
 router.post('/', function(req, res) {
-  //console.log('new user profile');
   var user = req.user;
   user.name = req.body.name;
   user.motorcycle =  req.body.motorcycle;
@@ -18,7 +17,7 @@ router.post('/', function(req, res) {
 
   }).catch(function(err){
     console.log('Error in /register', err);
-  
+
     res.sendStatus(500);
   });
 });

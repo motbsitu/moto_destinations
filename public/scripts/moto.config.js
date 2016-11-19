@@ -25,6 +25,5 @@ angular.module('motoApp').config(function($routeProvider, $locationProvider) {
     controller: 'LoginController as login'
   }).otherwise({
     templateUrl: 'views/about.html',
-    
   });
 });

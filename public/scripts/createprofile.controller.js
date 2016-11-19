@@ -17,5 +17,4 @@ function CreateprofileController($http, $location) {
       console.log('error registering', error);
     });
   };
-
 }

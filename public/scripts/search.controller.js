@@ -12,47 +12,38 @@ function SearchController($http, $location, geolocation, gservice) {
     ctrl.formData.latitude = 39.500;
     ctrl.formData.longitude = -98.350;
 
-    $http.get('/authenticated').success(function(){
-    //mapping current location
-        geolocation.getLocation().then(function(data){
+    $http.get('/authenticated').success(function() {
+        //mapping current location
+        geolocation.getLocation().then(function(data) {
             // Set the latitude and longitude equal to the HTML5 coordinates
-            coords = {lat:data.coords.latitude, long:data.coords.longitude};
+            coords = {
+                lat: data.coords.latitude,
+                long: data.coords.longitude
+            };
             // coords to number
             ctrl.formData.longitude = parseFloat(coords.long).toFixed(3);
             ctrl.formData.latitude = parseFloat(coords.lat).toFixed(3);
 
             gservice.refreshSearch(ctrl.formData.latitude, ctrl.formData.longitude, []);
         });
-}).error(function(error){
-    $location.path('/login');
-});
-
+    }).error(function(error) {
+        $location.path('/login');
+    });
 
     ctrl.motodestQuery = function() {
-
-      queryBody = {
-          longitude: parseFloat(ctrl.formData.longitude).toFixed(3),
-          latitude: parseFloat(ctrl.formData.latitude).toFixed(3),
-          distance: parseFloat(ctrl.formData.distance)
-      };
-        $http.get('/search/moto.destination?longitude='+ parseFloat(ctrl.formData.longitude).toFixed(3) +
-         '&latitude='+ parseFloat(ctrl.formData.latitude).toFixed(3) + '&distance='+ parseFloat(ctrl.formData.distance))
-          .success(function(queryResults){
-            gservice.refreshSearch(queryBody.latitude, queryBody.longitude, queryResults);
-            ctrl.destArray = queryResults;
-          })
-          .error(function(queryResults){
-            console.log('error query', + queryResults);
-
-          })
-      };
-
-
-      //trying to get list items to open info window
-      // ctrl.openInfoWindow = function(e, selectedMarker){
-      //   e.preventDefault();
-      //   google.maps.event.trigger(selectedMarker, "click");
-      // }
-
-
+        queryBody = {
+            longitude: parseFloat(ctrl.formData.longitude).toFixed(3),
+            latitude: parseFloat(ctrl.formData.latitude).toFixed(3),
+            distance: parseFloat(ctrl.formData.distance)
+        };
+        $http.get('/search/moto.destination?longitude=' + parseFloat(ctrl.formData.longitude).toFixed(3) +
+                '&latitude=' + parseFloat(ctrl.formData.latitude).toFixed(3) + '&distance=' + parseFloat(ctrl.formData.distance))
+            .success(function(queryResults) {
+                gservice.refreshSearch(queryBody.latitude, queryBody.longitude, queryResults);
+                ctrl.destArray = queryResults;
+            })
+            .error(function(queryResults) {
+                console.log('error query', +queryResults);
+            })
+    };
 }

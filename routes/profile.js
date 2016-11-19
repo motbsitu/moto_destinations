@@ -21,7 +21,6 @@ router.get('/moto.users', function(req,res){
     return res.send(motouser);
 }
   res.sendStatus(401);
-  // console.log('profile router working');
 });
 
 

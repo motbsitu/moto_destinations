@@ -31,9 +31,8 @@ function findAndComparePassword(email, password, done) {
       return done(null, false);
     }
 
-    //console.log('found user:', user);
-    // at this point we have found a user
-    // still need to check their password
+
+    // found a user and check password
     user.comparePassword(password)
         .then(function(isMatch){
           if (isMatch) {
