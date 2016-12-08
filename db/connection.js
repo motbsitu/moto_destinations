@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var dbURL = process.env.MONGOD_URI || 'mongodb://localhost/rho';
+var dbURL = process.env.MONGODB_URI || 'mongodb://localhost/motoDestinations';
 
 exports.connect = function () {
   mongoose.connect(dbURL);
