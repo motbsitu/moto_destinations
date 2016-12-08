@@ -46,6 +46,7 @@ body{
 .about{
   color: white;
   font-size: 15px;
+  margin: 15px;
 
 }
 h2.about{
@@ -64,10 +65,10 @@ h1{
 .dropdown{
   font-size: 25px;
 }
-.about{
-  margin: 30px;
+/*.about{
+
   color: white;
-}
+}*/
 
 a{
   color: black;
