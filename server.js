@@ -1,4 +1,5 @@
 const express =  require('express');
+const sslRedirect = require('heroku-ssl-redirect');
 const app = express();
 const connection = require('./db/connection');
 const path = require('path');
@@ -17,7 +18,7 @@ const methodOverride = require('method-override');
 
 
 const sessionConfig = {
-  secret: 'super secret string goes here', // TODO in a real app this would be read from ENV
+  secret: ' ',
   key: 'user',
   resave: true,
   saveUninitialized: true,
@@ -26,6 +27,8 @@ const sessionConfig = {
 
 auth.setup();
 connection.connect();
+
+app.use(sslRedirect(['production'], 301));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,6 +48,7 @@ app.use('/createprofile', createprofile);
 app.use('/profile', profile);
 app.use('/checkin', checkin);
 app.use('/search', search);
+
 
 app.get('/.well-known/acme-challenge/0s60KDv-MAk1kIUFb72Y8Y9rgUU6T6QUlyiAPJMNipo',
         function (req,res){
