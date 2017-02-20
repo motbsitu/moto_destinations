@@ -49,10 +49,7 @@ app.use('/profile', profile);
 app.use('/checkin', checkin);
 app.use('/search', search);
 
-// http://www.motodestinations.com/.well-known/acme-challenge/rbjuxGCACD47ugCgZAYRnF6HmJ6_jCUe9mMSZXc9qnQ before continuing:
-//
-// rbjuxGCACD47ugCgZAYRnF6HmJ6_jCUe9mMSZXc9qnQ._buPIbebJ-48T-JaN-s6clt7KQNy800WS5GVrM9QtDE
-//
+
 
 app.get('/.well-known/acme-challenge/1bbIm9NOD8I86YaZAqlMA_uurx10bWb3ewMu_CdkQ5c',
         function (req,res){
