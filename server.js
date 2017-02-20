@@ -49,11 +49,21 @@ app.use('/profile', profile);
 app.use('/checkin', checkin);
 app.use('/search', search);
 
+// http://www.motodestinations.com/.well-known/acme-challenge/rbjuxGCACD47ugCgZAYRnF6HmJ6_jCUe9mMSZXc9qnQ before continuing:
+//
+// rbjuxGCACD47ugCgZAYRnF6HmJ6_jCUe9mMSZXc9qnQ._buPIbebJ-48T-JaN-s6clt7KQNy800WS5GVrM9QtDE
+//
 
-app.get('/.well-known/acme-challenge/0s60KDv-MAk1kIUFb72Y8Y9rgUU6T6QUlyiAPJMNipo',
+app.get('/.well-known/acme-challenge/rbjuxGCACD47ugCgZAYRnF6HmJ6_jCUe9mMSZXc9qnQ',
         function (req,res){
-          res.send('0s60KDv-MAk1kIUFb72Y8Y9rgUU6T6QUlyiAPJMNipo._buPIbebJ-48T-JaN-s6clt7KQNy800WS5GVrM9QtDE');
+          res.send('rbjuxGCACD47ugCgZAYRnF6HmJ6_jCUe9mMSZXc9qnQ._buPIbebJ-48T-JaN-s6clt7KQNy800WS5GVrM9QtDE');
         });
+
+//old cert
+// app.get('/.well-known/acme-challenge/0s60KDv-MAk1kIUFb72Y8Y9rgUU6T6QUlyiAPJMNipo',
+//         function (req,res){
+//           res.send('0s60KDv-MAk1kIUFb72Y8Y9rgUU6T6QUlyiAPJMNipo._buPIbebJ-48T-JaN-s6clt7KQNy800WS5GVrM9QtDE');
+//         });
 // serve the index page at /
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));
