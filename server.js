@@ -51,16 +51,12 @@ app.use('/search', search);
 
 
 
-app.get('/.well-known/acme-challenge/1bbIm9NOD8I86YaZAqlMA_uurx10bWb3ewMu_CdkQ5c',
+app.get('/.well-known/acme-challenge/qwUkPKiXVibTqk_zFh1E0Dy9kJFF1YNt-gjGhvyjyrk',
         function (req,res){
-          res.send('1bbIm9NOD8I86YaZAqlMA_uurx10bWb3ewMu_CdkQ5c._buPIbebJ-48T-JaN-s6clt7KQNy800WS5GVrM9QtDE');
+          res.send('qwUkPKiXVibTqk_zFh1E0Dy9kJFF1YNt-gjGhvyjyrk._buPIbebJ-48T-JaN-s6clt7KQNy800WS5GVrM9QtDE');
         });
 
-//old cert
-// app.get('/.well-known/acme-challenge/0s60KDv-MAk1kIUFb72Y8Y9rgUU6T6QUlyiAPJMNipo',
-//         function (req,res){
-//           res.send('0s60KDv-MAk1kIUFb72Y8Y9rgUU6T6QUlyiAPJMNipo._buPIbebJ-48T-JaN-s6clt7KQNy800WS5GVrM9QtDE');
-//         });
+
 // serve the index page at /
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));

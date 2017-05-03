@@ -11,6 +11,7 @@ function RegisterController($http, $location) {
       email: ctrl.email,
       password: ctrl.password
     }).then(function(){
+      console.log('what now?');
       $location.path('/createprofile');
     }, function(error) {
       console.log('error registering', error);
