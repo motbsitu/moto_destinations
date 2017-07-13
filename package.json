@@ -1,6 +1,9 @@
 {
   "name": "moto_destinations",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.1.4"
+    },
   "description": "Moto Destinations Application",
   "main": "index.js",
   "scripts": {
