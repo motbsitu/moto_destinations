@@ -1,10 +1,10 @@
-#Moto Destinations Application
+# Moto Destinations Application
 This is a mobile friendly application for users to record their favorite destinations to visit while on motorcycle rides using google maps.  The application also allows users to search for destinations they have saved as well as other users favorite destinations within a specified distance of their current location.
 
 https://www.motodestinations.com
 
 
-##Features
+## Features
 - Geolocation services for checking in and searching
 - Visual mapping and distance search using Google Maps API
 - Secure registration and login
@@ -13,13 +13,13 @@ https://www.motodestinations.com
 - Link to directions using Google maps
 
 
-##Technologies Used
+## Technologies Used
 Application built using the MEAN Stack (MongoDB, Express, Angular and Node).  Google Maps API, HTML5 Geolocation, Bootstrap, Passport.
 
-##Configure Instructions
+## Configure Instructions
 npm install
 
-##Near Future Goals
+## Near Future Goals
 - Better map focus (zoom to all selected destinations)
 - Map info boxes toggle close when click on a different one
 - Reverse geocode favorited destinations for full address
